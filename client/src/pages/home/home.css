@@ -1,0 +1,76 @@
+.home{
+    margin-top: 10rem;
+    display: flex;
+    width: 80%;
+    align-items: center;
+    justify-content: center;
+}
+.home-title{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    gap: 1rem;
+    & button {
+        background-color:rgb(0, 133, 81);
+        width: 50%;
+        padding: 0.5rem;
+        font-size: 24px;
+        font-weight: bold;
+        border-radius: 1rem;
+        color:White;
+        cursor: pointer;
+    }
+    & img{
+        width: 30%;
+        aspect-ratio: 16/9;
+    }
+}
+
+.temp{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    width: 50%;
+    height: 50vh;
+}
+
+
+button {
+    
+    background-color:rgb(0, 133, 81);
+    width: 50%;
+    padding: 0.5rem;
+    font-size: 24px;
+    font-weight: bold;
+    border-radius: 1rem;
+    color:White;
+    cursor: pointer;
+
+}
+.emoji{
+    margin-top: 5rem;
+    display: flex;
+    margin-bottom: 3rem;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    & {
+        font-size: 36px;
+        font-weight: bold;
+        color:rgb(0, 0, 0)
+    }
+}
+.temp button:disabled{
+    background-color: grey;
+    cursor: not-allowed;
+}
+
+.temp span{
+    font-size: 200px;
+}
+.countDown{
+    font-size: 20px;
+    color:black;
+    margin-top: 2rem;
+}
