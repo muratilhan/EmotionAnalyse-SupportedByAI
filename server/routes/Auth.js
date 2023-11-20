@@ -32,7 +32,7 @@ router.post('/login', async (req, res) => {
             return res.status(400).json("wrong")
         }
         
-        return res.status(200).json({user})
+        return res.status(200).json(user)
 
     }catch(err){
         return res.status(200).json("yanlış")

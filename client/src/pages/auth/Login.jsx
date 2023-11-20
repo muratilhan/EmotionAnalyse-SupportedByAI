@@ -23,7 +23,7 @@ function Login() {
   const handleClick = async (e) => {
     e.preventDefault();
     try{
-      const res = await axios.post('http://localhost:7000/auth/login/', form)
+      const res = await axios.post('https://emotionapi.onrender.com/auth/login/', form)
       context.setUser(res.data.user)
       localStorage.setItem("user",JSON.stringify(res.data.user))
       console.log(res.data)

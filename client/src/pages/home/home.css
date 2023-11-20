@@ -74,3 +74,22 @@ button {
     color:black;
     margin-top: 2rem;
 }
+
+
+video{
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+}
+
+button {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+
+    appearance: none;
+    border: none;
+    outline: none;
+
+    pad: 8px 16px;
+}

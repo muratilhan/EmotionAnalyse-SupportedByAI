@@ -17,7 +17,7 @@ const Feedbacks = () => {
   useEffect(()=>{
     const getFeedbacks = async () => {
       try{
-        const res = await axios.get('http://localhost:7000/feedback')
+        const res = await axios.get('https://emotionapi.onrender.com/feedback/')
         setFeedbacks(res.data)
       }catch(err){
         console.log(err)

@@ -10,8 +10,6 @@ import Login from "./pages/auth/Login";
 import { AuthContext } from "./context/AuthContext";
 import Feedbacks from "./pages/feedbacks/Feedbacks";
 import FeedbackUs from "./components/feedbackUs/FeedbackUs";
-import { FaBeer } from "react-icons/fa";
-import StarRating from "./components/starRating/StarRating";
 import Temp from "./pages/home/Temp";
 
 function App() {

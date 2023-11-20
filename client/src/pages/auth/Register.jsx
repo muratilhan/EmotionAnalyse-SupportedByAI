@@ -22,7 +22,7 @@ function Register() {
   const handleClick = async (e) => {
     e.preventDefault();
     try{
-      await axios.post('http://localhost:7000/auth/register', form)
+      await axios.post('https://emotionapi.onrender.com/auth/register', form)
       navigate('/login')
     }catch(err){
       console.log(err)

@@ -8,12 +8,7 @@ const Home = () => {
 
     const handleClick = (e) => {
         e.preventDefault()
-        //navigate("/questions");
-        const openCamera = async () => {
-          const res = await axios.post('http://127.0.0.1:5000/start')
-          console.log(res)
-        }
-        openCamera()
+        navigate("/questions");
     }
 
   return (
