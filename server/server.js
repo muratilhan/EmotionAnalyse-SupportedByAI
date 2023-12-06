@@ -5,6 +5,7 @@ const express = require("express");
 const authRoute = require("./routes/Auth");
 const userRoute = require("./routes/UserRoute");
 const feedbackRoute = require("./routes/FeedbackRoute");
+const testResultRoute = require('./routes/TestResultRoute')
 const app = express();
 
 app.use(express.json());
@@ -13,6 +14,7 @@ app.use(cors());
 app.use("/auth", authRoute);
 app.use("/user", userRoute);
 app.use("/feedback", feedbackRoute);
+app.use("/testResult", testResultRoute);
 
 // connect to mongo db
 mongoose

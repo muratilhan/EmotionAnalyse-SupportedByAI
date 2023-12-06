@@ -7,8 +7,8 @@ const router = express.Router();
 
 
 router.get('/:id', async (req, res) => {
-    const user = await Feedback.findById(req.params.id)
-    res.status(200).json(user)
+    const feedback = await Feedback.findById(req.params.id)
+    res.status(200).json(feedback)
 })
 
 // router.get('/', async (req, res) => {

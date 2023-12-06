@@ -11,8 +11,9 @@ const Temp = () => {
     e.preventDefault();
     //navigate("/questions");
     const openCamera = async () => {
-      const res = await axios.post("https://duyguanaliziai2.onrender.com/start");
+      const res = await axios.get("http://127.0.0.1:5000/test");
       console.log(res)
+      setIslaughed(res)
       //console.log(res)
     };
     openCamera();

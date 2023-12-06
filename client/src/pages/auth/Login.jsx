@@ -24,8 +24,9 @@ function Login() {
     e.preventDefault();
     try{
       const res = await axios.post('https://emotionapi.onrender.com/auth/login/', form)
-      context.setUser(res.data.user)
-      localStorage.setItem("user",JSON.stringify(res.data.user))
+      console.log(res)
+      context.setUser(res.data)
+      localStorage.setItem("user",JSON.stringify(res.data))
       console.log(res.data)
       navigate('/')
     }catch(err){

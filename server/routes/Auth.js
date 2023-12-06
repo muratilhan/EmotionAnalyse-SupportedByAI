@@ -31,7 +31,6 @@ router.post('/login', async (req, res) => {
         if(!validate){
             return res.status(400).json("wrong")
         }
-        
         return res.status(200).json(user)
 
     }catch(err){

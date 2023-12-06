@@ -1,13 +1,15 @@
 .home{
-    margin-top: 10rem;
+    margin-top: 3rem;
     display: flex;
-    width: 80%;
+    width: 100%;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
 }
 .home-title{
     display: flex;
     flex-direction: column;
+    align-items: center;
     width: 50%;
     gap: 1rem;
     & button {
@@ -21,8 +23,11 @@
         cursor: pointer;
     }
     & img{
-        width: 30%;
+        width: 200px;
         aspect-ratio: 16/9;
+    }
+    & p{
+        font-size: 24px;
     }
 }
 
@@ -76,20 +81,30 @@ button {
 }
 
 
-video{
-    width: 100%;
-    max-width: 100%;
-    height: auto;
+
+
+.test-buttons-container{
+    margin-top: 5rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-bottom: 10rem;
+    justify-content: center;
 }
+.test-buttons-container li{
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+    & button {
+        width: 80%;
+        background-color: red;
+    }
+    & img{
+        width: 350px;
+        height: 180px;
+        padding: 1rem;
+    }
 
-button {
-    position: absolute;
-    bottom: 20px;
-    left: 20px;
-
-    appearance: none;
-    border: none;
-    outline: none;
-
-    pad: 8px 16px;
 }

@@ -1,25 +1,39 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./questions.css";
-import { data as questions } from "../../DB";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { DataContext } from "../../context/DataContext";
 
 function Questions() {
   const navigate = useNavigate();
+  const dataContext = useContext(DataContext);
+  const [questions, setQuestions] = useState([])
 
-  const completeTest = (e) => {
-    e.preventDefault();
-    navigate("/results");
-    const openCamera = async () => {
-      const res = await axios.post('http://127.0.0.1:5000/stop')
-    }
-    //openCamera()
+  const sumCoefficients = (data) => {
+    const totalKatsayi = data.reduce((acc, item) => acc + item.katsayi, 0);
+    dataContext.setSumRes(totalKatsayi);
+    console.log(totalKatsayi)
   };
 
-  const [disabled, setDisabled] = useState(true)
+  const completeTest = async (e) => {
+    e.preventDefault();
+    const res = await axios.post('http://127.0.0.1:5000/close')
+    console.log(res)
+
+    sumCoefficients(selectedAnswers);
+    navigate("/results");
+  };
 
 
 
+  useEffect(() => {
+    const fetchQuestions = async () => {
+      const res = await import(`../../db/${dataContext.selectedTitle}Test`)
+      setQuestions([...res.data])
+      console.log([...res.data])
+    }
+    fetchQuestions()
+  }, [dataContext]);
 
   const [selectedAnswer, setSelectedAnswer] = useState();
   const [selectedAnswers, setSelectedAnswers] = useState([]);
@@ -35,10 +49,9 @@ function Questions() {
     setActiveTest((prev) => !prev);
   };
 
-
   return (
     <div className="question-container">
-      {questions.map((data, index) => {
+      {questions && questions.map((data, index) => {
         return (
           <div className="question" key={index}>
             <div className="mobile-info">
@@ -63,7 +76,11 @@ function Questions() {
         );
       })}
 
-      <button disabled={questions.length != selectedAnswers.length} onClick={completeTest} className="complete-test">
+      <button
+        disabled={selectedAnswers.length == 5}
+        onClick={completeTest}
+        className="complete-test"
+      >
         Testi Bitir
       </button>
     </div>

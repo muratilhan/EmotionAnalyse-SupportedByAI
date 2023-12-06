@@ -1,10 +1,10 @@
 import "./App.css";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
 import Navbar from "./components/navbar/Navbar";
 import Home from "./pages/home/Home";
 import QuestionPage from "./pages/questions/QuestionPage";
-import Results from "./components/results/Results";
+import Results from "./pages/results/Results";
 import Register from "./pages/auth/Register";
 import Login from "./pages/auth/Login";
 import { AuthContext } from "./context/AuthContext";
@@ -27,9 +27,8 @@ function App() {
     <div className="App"> 
       <BrowserRouter>
         <Navbar />
-
         <Routes>
-          <Route path="/" element={<Temp />} />
+          <Route path="/" element={<Home />} />
           <Route path="/questions" element={<QuestionPage />} />
           <Route path="/results" element={<Results />} />
           <Route path="/login" element={<Login />} />
