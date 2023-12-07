@@ -23,6 +23,9 @@ const testResultSchema = mongoose.Schema(
     Notr: {
       type: Number,
     },
+    Sasirmis:{
+      type: Number
+    },
     user: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",
