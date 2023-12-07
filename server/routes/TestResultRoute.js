@@ -38,6 +38,7 @@ router.post('/', async (req, res) => {
             Mutlu: req.body.Mutlu,
             Mutsuz: req.body.Mutsuz,
             Notr: req.body.Notr,
+            Sasirmis: req.body.Sasirmis,
             user: req.body.userID
         })    
         const testResult = await newTestResult.save();
@@ -48,6 +49,14 @@ router.post('/', async (req, res) => {
 })
 
 
+router.delete('/', async (req, res) => {
+    try{
+     await TestResult.deleteMany()
+     return res.status(200).json("silindi")
+    }catch(err){
+     console.log(err)
+    } 
+})
 
 
 

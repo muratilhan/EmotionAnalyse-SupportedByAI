@@ -11,6 +11,7 @@ import { AuthContext } from "./context/AuthContext";
 import Feedbacks from "./pages/feedbacks/Feedbacks";
 import FeedbackUs from "./components/feedbackUs/FeedbackUs";
 import Temp from "./pages/home/Temp";
+import PrevResults from './pages/PrevResults/PrevResults'
 
 function App() {
   const context = useContext(AuthContext);
@@ -30,6 +31,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/questions" element={<QuestionPage />} />
+          <Route path="/prevresults" element={<PrevResults />} />
           <Route path="/results" element={<Results />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />

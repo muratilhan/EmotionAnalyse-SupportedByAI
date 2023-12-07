@@ -19,7 +19,6 @@ function Questions() {
     e.preventDefault();
     const res = await axios.post('http://127.0.0.1:5000/close')
     console.log(res)
-
     sumCoefficients(selectedAnswers);
     navigate("/results");
   };

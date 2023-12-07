@@ -84,7 +84,8 @@ button {
 
 
 .test-buttons-container{
-    margin-top: 5rem;
+    width: 80;
+    margin-top: 2rem;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
@@ -107,4 +108,14 @@ button {
         padding: 1rem;
     }
 
+}
+
+.link-title{
+    width: 80%;
+    margin-top: 3rem;
+    margin-left: 5rem;
+    & a{
+        font-size: 24px;
+        color:black;
+    }
 }

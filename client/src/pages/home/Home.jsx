@@ -29,8 +29,6 @@ const Home = () => {
 
   return (
     <div className="home">
-          <Link to='/results'>asd</Link>
-
       <div className="home-title">
         <div>
           <img 
@@ -52,7 +50,13 @@ const Home = () => {
           test edin ve psikolojik sıkıntılarınızın düzeyi hakkında bilgi edinin
         </p>
       </div>
+      <div className="link-title">
+      <Link to='prevResults'>Önceki Sonuçlarımı Görüntüle⤴️</Link>
+        
+      </div>
+
       <ul className="test-buttons-container">
+        
         {allTests.map((item,i) => {
           return (
             <li key={i}>
