@@ -19,9 +19,10 @@ const PrevResults = () => {
       const res = await axios.get(
         `https://emotionapi.onrender.com/testResult/${authContext?.user?._id}`
       );
-      setPrevResults(res.data);
+      setPrevResults(res.data.sort((a, b) =>
+      a.createdAt < b.createdAt ? 1 : -1
+    ));
       setLoading(false);
-      console.log(res);
     };
     fetchPrevResults();
   }, [dataContext]);

@@ -18,6 +18,7 @@ const Feedbacks = () => {
     const getFeedbacks = async () => {
       try{
         const res = await axios.get('https://emotionapi.onrender.com/feedback/')
+        console.log(res)
         setFeedbacks(res.data)
       }catch(err){
         console.log(err)

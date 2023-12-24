@@ -25,10 +25,8 @@ const FeedbackUs = () => {
     e.preventDefault();
     try {
       const res = await axios.post("https://emotionapi.onrender.com/feedback/", form);
-      console.log(res);
       alert('Feeback has been sent')
     } catch (err) {
-      console.log(err);
     }
   };
   return (

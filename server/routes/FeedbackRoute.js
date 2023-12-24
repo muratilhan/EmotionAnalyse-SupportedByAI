@@ -19,6 +19,7 @@ router.get('/:id', async (req, res) => {
 
 router.get('/', async (req, res) => {
     try{
+        console.log("asd")
         const items = await Feedback
         .find()
         .populate({ path: 'user'});
@@ -29,11 +30,12 @@ router.get('/', async (req, res) => {
 })
 
 router.post('/', async (req, res) => {
+
     try{
         const newFeedback = new Feedback({
             comment: req.body.comment,
             rating: req.body.rating,
-            user: req.body.userID
+            user: req.body._id
         })    
         const feedback = await newFeedback.save();
         res.status(200).json(feedback)

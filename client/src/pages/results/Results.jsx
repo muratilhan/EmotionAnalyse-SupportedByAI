@@ -16,24 +16,23 @@ import { AuthContext } from "../../context/AuthContext";
 const Results = () => {
   const dataContext = useContext(DataContext);
   const authContext = useContext(AuthContext);
-
+  const [detectedAmountOfEmotion, setDetectedAmountOfEmotion] = useState(0)
   const [point, setPoint] = useState(0);
   const [resultText, setResultText] = useState("");
 
   useEffect(() => {
-    console.log(dataContext.response);
     if (dataContext.response) {
       if (dataContext.selectedTitle?.toLowerCase() == "depresyon") {
-        const res = calculateDepression(dataContext.response?.commonEmotion);
+        const res = calculateDepression(dataContext.response);
         console.log(res);
         setPoint(dataContext.sumRes + res);
       }
       if (dataContext.selectedTitle?.toLowerCase() == "umutsuzluk") {
-        const res = calculateUmutsuzluk(dataContext.response?.commonEmotion);
+        const res = calculateUmutsuzluk(dataContext.response);
         setPoint(dataContext.sumRes + res);
       }
     }
-  }, [dataContext, dataContext?.selectedTitle]);
+  }, [dataContext, dataContext?.selectedTitle, dataContext?.response]);
 
   useEffect(() => {
     if (dataContext?.selectedTitle?.toLowerCase() == "depresyon") {
@@ -68,10 +67,23 @@ const Results = () => {
       console.log(data);
     };
     if (dataContext.response && resultText != "") {
-      console.log("hehe");
       sendData();
     }
   }, [dataContext]);
+
+  useEffect(() => {
+    let sum = 0;
+    if(dataContext?.response){
+      for (const [key, value] of Object.entries( dataContext?.response?.emotionCounts)) {
+        if(key == 'Notr') {
+          continue;
+        }
+        console.log("key:",key, "value:", value)
+        sum = sum + value
+      }
+    }
+    setDetectedAmountOfEmotion(sum)
+  },[dataContext, dataContext?.response])
 
   return (
     <div className="result">
@@ -94,18 +106,16 @@ const Results = () => {
                 <td>Korkmus</td>
                 <td>Mutlu</td>
                 <td>Mutsuz</td>
-                <td>Notr</td>
                 <td>Sasirmis</td>
               </tr>
               <tr>
                 <td>Duygu sayısı</td>
-                <td> {dataContext.response?.emotionCounts.Igrenmis} </td>
-                <td> {dataContext.response?.emotionCounts.Kizgin} </td>
-                <td> {dataContext.response?.emotionCounts.Korkmus} </td>
-                <td> {dataContext.response?.emotionCounts.Mutlu} </td>
-                <td> {dataContext.response?.emotionCounts.Mutsuz} </td>
-                <td> {dataContext.response?.emotionCounts.Notr} </td>
-                <td> {dataContext.response?.emotionCounts.Sasirmis} </td>
+                <td> {(dataContext.response?.emotionCounts.Igrenmis / detectedAmountOfEmotion * 100).toFixed(0) } %</td>
+                <td> {(dataContext.response?.emotionCounts.Kizgin / detectedAmountOfEmotion * 100).toFixed(0)} %</td>
+                <td> {(dataContext.response?.emotionCounts.Korkmus / detectedAmountOfEmotion * 100).toFixed(0)} % </td>
+                <td> {(dataContext.response?.emotionCounts.Mutlu  / detectedAmountOfEmotion * 100).toFixed(0)} % </td>
+                <td> {(dataContext.response?.emotionCounts.Mutsuz / detectedAmountOfEmotion * 100).toFixed(0)} % </td>
+                <td> {(dataContext.response?.emotionCounts.Sasirmis / detectedAmountOfEmotion * 100).toFixed(0)} %</td>
               </tr>
             </table>
           </div>
